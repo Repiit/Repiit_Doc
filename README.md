@@ -20,5 +20,7 @@ To start the process of letting the customer buy a subscription, the customer sh
 ## Get all new orders
 Every night We will make new orders for all subscription there should be renewed. The following API endpoint
 
-```MEDTOD: GET
-ENDPOINT: https://<base_address>/api/SalesController/GetOrders```
+```
+MEDTOD: GET
+ENDPOINT: https://<base_address>/api/SalesController/GetOrders
+```
