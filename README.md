@@ -17,7 +17,27 @@ To start the process of letting the customer buy a subscription, the customer sh
 
 `https://<base_address>/#customerLogin?DATASET=<Dataset>&ITEMNUMBER=<Itemnumber>`
   
-## Get all new orders
+  
+## API
+### Authorization
+All api calls should enclose a `token` in the `Authorization` field of the header
+To get this token, a call to the following endpoint with the provided username/password is nessecary
+
+```
+MEDTOD: GET
+ENDPOINT: https://<base_address>/API/Login/Authorize
+BODY:
+{
+  "USERNAME": "string",
+  "PASSWORD": "string",
+}
+```
+
+If the authorization is successfull a token will be returned
+
+
+
+### Get all new orders
 Every night We will make new orders for all subscription there should be renewed. The following API endpoint
 
 ```
@@ -82,3 +102,23 @@ This will return an json array of the orders
   }
 ]
 ```
+Desciption of the individual fields is to be done. For more information don't hestitate to ask by e-mail fb@repiit.com
+
+When an order is processed by the customer system, then the following endpoint can be called to remove the order from succesive calls to GetOrdersReadyForDelivery
+
+```
+MEDTOD: PUT
+ENDPOINT: https://<base_address>/API/SalesTableAr/UpdateOrderStatusRecieved/<id>
+```
+where <id> is the orders "ROWNUMBER"
+
+### Charge order
+When order is ready to be charged on the customers creditcard, typically when the order is packed and ready for shipment the following endpoint should be used.
+
+```
+MEDTOD: PUT
+ENDPOINT: https://<base_address>/API/SalesTableAr/UpdateOrderForInvoicing/<id>
+```
+
+This will return with statuscode `200` if the creditcard is sucessfully charged or statuscode `500` if the creditcard could not be charged.
+
