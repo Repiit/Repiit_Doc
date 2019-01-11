@@ -102,7 +102,7 @@ This will return an json array of the orders
   }
 ]
 ```
-Desciption of the individual fields is to be done. For more information don't hestitate to ask by e-mail fb@repiit.com
+Desciption of the individual fields is to be done. For more information don't hestitate to ask by e-mail ext-tgn-tgn@repiit.com
 
 When an order is processed by the customer system, then the following endpoint can be called to remove the order from succesive calls to GetOrdersReadyForDelivery
 
